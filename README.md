@@ -1,54 +1,112 @@
-# React + TypeScript + Vite
+# Incubyte TDD Assessment - String Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.2-blue.svg)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-4.4.5-blue.svg)](https://vitejs.dev/)
+[![Tests](https://img.shields.io/badge/tests-100%25%20coverage-brightgreen)]()
 
-Currently, two official plugins are available:
+A Test-Driven Development (TDD) implementation of the String Calculator kata, demonstrating software craftsmanship principles and rigorous testing practices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Some Screenshots are mentioned below
 
-## Expanding the ESLint configuration
+![Project Screenshot](https://private-user-images.githubusercontent.com/59674981/447290358-60a8186c-5776-4bec-a727-38d21e68c848.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDgxMjQwMzgsIm5iZiI6MTc0ODEyMzczOCwicGF0aCI6Ii81OTY3NDk4MS80NDcyOTAzNTgtNjBhODE4NmMtNTc3Ni00YmVjLWE3MjctMzhkMjFlNjhjODQ4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTI0VDIxNTUzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWUzNGUzMTA2ZTg4OTNkY2I0N2I2MzRkNTQ2OWRjM2ZhMTdkODNkZmZiMzk1ZWU3YTc0MTFkYzYxNzAzMGNmOWMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.omjmZPX8DbdffoEkaZQvZYch85DPFiU-zNR3iozv7EY) <!-- Add screenshot if available -->
+![Project Screenshot](https://private-user-images.githubusercontent.com/59674981/447290357-8190c924-c6ed-4792-8528-8ac64ed845d0.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDgxMjQwMzgsIm5iZiI6MTc0ODEyMzczOCwicGF0aCI6Ii81OTY3NDk4MS80NDcyOTAzNTctODE5MGM5MjQtYzZlZC00NzkyLTg1MjgtOGFjNjRlZDg0NWQwLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTI0VDIxNTUzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVhNjM0ZTk0ZDFlZTliOTViZDY5ZjI3NWEzMWU2ZmUzZjMwYWFiNjBkZjJhMTRiYWM5MmY2Y2UxNjU5YmUyODUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.GoJl7CkqB3yciHulSkyiVDpv0m4LVGLWXbq3ckdIBRg) <!-- Add screenshot if available -->
+![Project Screenshot](https://private-user-images.githubusercontent.com/59674981/447290359-ef80b56d-3642-4a76-a6b7-b7f4ee027583.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDgxMjQwMzgsIm5iZiI6MTc0ODEyMzczOCwicGF0aCI6Ii81OTY3NDk4MS80NDcyOTAzNTktZWY4MGI1NmQtMzY0Mi00YTc2LWE2YjctYjdmNGVlMDI3NTgzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA1MjQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNTI0VDIxNTUzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWEwYThkMWEzNjczZmEzYzkyNGFhZjNiYTkxNjFhODI5NDkxZjA1NjBmOTVlMjhhOGNiNWM5NmMwOWVmYmQ0ZDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.x47uQW-lmHfpE8L6C6GXfTA69cOSJkTMMYNK0Jx7m9s) <!-- Add screenshot if available -->
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- ✅ Strict Test-Driven Development approach
+- ✅ Negative number validation
+- ✅ Custom delimiter support (single character)
+- ✅ Newline and comma delimiters handling
+- ✅ Comprehensive test coverage
+- ✅ Responsive UI for project documentation
+- ✅ Error handling for invalid inputs
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm (v9+)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/shishirtiwari23/incubyte-tdd-assessment.git
+   cd incubyte-tdd-assessment
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### 🧪 Usage
+
+#### Running Tests
+
+```bash
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### Starting Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+## 🧠 Key Implementation Details
+
+```typescript
+// Core add function signature
+function add(numbers: string): number {
+  // TDD-implemented logic
+}
+```
+
+### Example Test Cases
+
+```typescript
+test("add with custom delimiter returns sum", () => {
+  expect(add("//;\n1;2")).toBe(3);
+});
+
+test("add with negatives throws error", () => {
+  expect(() => add("-1,2")).toThrow("negatives not allowed: -1");
+});
+
+test("handle newline delimiters", () => {
+  expect(add("1\n2,3")).toBe(6);
+});
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── assignment/          # Core implementation
+│   ├── add.ts           # String calculator logic
+│   └── add.test.ts      # Comprehensive test suite
+├── App.tsx              # Documentation UI
+├── main.tsx             # Application entry
+└── vite-env.d.ts        # Type declarations
+```
+
+## 🛠️ Technologies
+
+- **React 18**
+- **TypeScript 5**
+- **Vite**
+- **Vitest** (Testing framework)
+- **ESLint** (Code quality)
+- **Prettier** (Code formatting)
+
+## 📬 Contact
+
+**Shishir Tiwari**  
+📧 shishir456tiwari@gmail.com  
+💻 [GitHub Profile](https://github.com/shishirtiwari23)  
+📄 [View Resume](https://drive.google.com/file/d/1We9bO3vdHz2KnadqTMfevaymClAO4YoQ/view?usp=sharing)
