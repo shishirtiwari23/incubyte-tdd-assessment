@@ -66,6 +66,7 @@ describe("String calculator", () => {
   test("add: support for custom delimiters", () => {
     expect(add("//;\n1;2")).toBe(3);
     expect(add("//&\n&&&&1&2&35&533&&&")).toBe(571);
+    expect(add("//*\n1*2")).toBe(3); // For characters like "*","." which are also used as regex characters
   });
 
   // 1. Moving on to the next case, adding the support for rejecting negative numbers

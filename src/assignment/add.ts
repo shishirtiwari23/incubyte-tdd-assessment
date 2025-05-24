@@ -7,7 +7,7 @@ function add(numbers: string) {
   let del: RegExp = /,|\n/;
 
   if (numbers.startsWith("//")) {
-    del = new RegExp(numbers[2]);
+    del = new RegExp(escapeRegExp(numbers[2]));
     // Since delimiter will always be at index 2
     numbers = numbers.slice(4);
     // Removing everything before and including "\n"
@@ -26,3 +26,8 @@ function add(numbers: string) {
   return numArray.reduce((sum: number, cur: number) => sum + cur, 0);
 }
 export default add;
+
+function escapeRegExp(str: string) {
+  //This is a necessary step since there are characters possible for custom delimiters like "*",".","+" which are also valid regex characters
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
