@@ -1,10 +1,5 @@
 # Incubyte TDD Assessment - String Calculator
 
-[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.2-blue.svg)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-4.4.5-blue.svg)](https://vitejs.dev/)
-[![Tests](https://img.shields.io/badge/tests-100%25%20coverage-brightgreen)]()
-
 A Test-Driven Development (TDD) implementation of the String Calculator kata, demonstrating software craftsmanship principles and rigorous testing practices.
 
 Some Screenshots are mentioned below
