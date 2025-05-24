@@ -7,12 +7,50 @@ describe("String calculator", () => {
   // 3. Now that the function is defined, we can move ahead with modifying the same test to take an argument according to our need since the function will only be able to take up the argument if it is already in existence, and there won't be any need of any additional test to check for the existence of the function
   // 4. The test fails again because the function does not take any argument, so we add the argument to the function
   // 5. Now the function takes an argument, we need to make sure that the argument is a string, so we add that check to the test
+  // 6. There isn't a need to write to test to insure that there is only one argument, since even if there were more that one argument, the function will only take the first one
 
-  test("add argument must be a string", () => {
+  test("add: argument must be a string", () => {
     //eslint-disable-next-line
     expect(() => add(123 as any)).toThrow("Invalid argument: not a string");
   });
 
   // 1. The test fails because function is not performing any explicit type checking
-  // 2. We add the explicit type checking in the function to make the test pass
+  // 2. We added the explicit type checking in the function to make the test pass
+  // 3. Now since our code and tests work together, we will move on to writing the test for our first valid argument i.e and empty string
+  // 4. since the function doesn't return anything as of now, we get undefined back but we expect a 0, so our test fails
+  // 5. We added the return statement in the function to make the test pass
+
+  test("add: empty string", () => {
+    expect(add("")).toBe(0);
+  });
+
+  // 1. Now creating a test to check the function for a our next valid argument i.e a string with only one number
+
+  test("add: single number returns the number", () => {
+    expect(add("24")).toBe(24);
+  });
+
+  // 1. Updated the function to return the number instead of undefined
+  // 2. Now creating a test to check the function for a our next valid argument i.e a string with two numbers
+
+  test("add: multiple numbers(two numbers)", () => {
+    expect(add("1,20")).toBe(21);
+  });
+
+  // 1. Now as expected the test fails, now updating the function to return the sum of the numbers.
+  // 2. Test passed, moving on to the next case i.e a string with any number of numbers
+
+  test("add: multiple numbers(any number of numbers)", () => {
+    expect(add("1,234,3,4,53")).toBe(295);
+  });
+
+  // 1. Now as expected the test fails, now updating the function to return the sum of the numbers.
+  // 2. Test passed, moving on to the next case, default support for "\n" and "," delimiters
+
+  test("add: default support for \n and , delimiters", () => {
+    expect(add("1\n2,332,23")).toBe(358);
+  });
+
+  // 1. Now as expected the test fails, now updating the function to provide the support for "\n" and "," by adding a regex
+  // 2. Test passed, moving on to the next case, support for custom delimiters
 });
