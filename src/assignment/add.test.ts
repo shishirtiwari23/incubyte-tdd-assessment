@@ -9,6 +9,9 @@ describe("String calculator", () => {
   // 5. Now the function takes an argument, we need to make sure that the argument is a string, so we add that check to the test
   // 6. There isn't a need to write to test to insure that there is only one argument, since even if there were more that one argument, the function will only take the first one
 
+  // We are here operating under following assumptions, which was given to us in the assignment
+  // 1. The numbers inside the string are always going to be integers
+
   test("add: argument must be a string", () => {
     //eslint-disable-next-line
     expect(() => add(123 as any)).toThrow("Invalid argument: not a string");
@@ -53,18 +56,26 @@ describe("String calculator", () => {
 
   // 1. Now as expected the test fails, now updating the function to provide the support for "\n" and "," by adding a regex
   // 2. Test passed, moving on to the next case, support for custom delimiters, writing the test for the same first, now here as per our understanding of the assignment, \n is being used as a syntax character while providing the support for a custom delimiter, it is not being used as an optional default delimiter like in the previous case
+
   // Here we are making some assumptions which are as follows
   // 1. The delimiter is a single character
   // 2. \n always follows the delimiter
 
+  // As per our expectation the test will fail, and after writing the test, we will update the function definition to make the test pass.
+
   test("add: support for custom delimiters", () => {
     expect(add("//;\n1;2")).toBe(3);
+    expect(add("//&\n&&&&1&2&35&533&&&")).toBe(571);
   });
 
-  // 1. As per our expectation the test will fail, and now we will update the function definition to make the test pass.
-  // 2. Test passed, now checking for some more complex test cases with custom delimiters
+  // 1. Moving on to the next case, adding the support for rejecting negative numbers
 
-  test("add: support for custom delimiters", () => {
-    expect(add("//&\n&&&&1&2&35&533&&&")).toBe(571);
+  test("add: support for negative numbers", () => {
+    expect(() => add("-1,-2,-3")).toThrow(
+      "negative numbers not allowed <-1, -2, -3>"
+    );
+    expect(() => add("-46433,34,0,-32563")).toThrow(
+      "negative numbers not allowed <-46433, -32563>"
+    );
   });
 });

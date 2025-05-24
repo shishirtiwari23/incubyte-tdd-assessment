@@ -4,18 +4,25 @@ function add(numbers: string) {
   }
   if (numbers === "") return 0;
 
-  let del = /,|\n/;
+  let del: RegExp = /,|\n/;
 
   if (numbers.startsWith("//")) {
     del = new RegExp(numbers[2]);
-    console.log(numbers);
+    // Since delimiter will always be at index 2
     numbers = numbers.slice(4);
     // Removing everything before and including "\n"
-    console.log(numbers);
   }
-  return numbers
+
+  const numArray: number[] = numbers
     .split(del)
-    .map((num) => Number(num))
-    .reduce((sum, cur) => sum + cur, 0);
+    .map((num: string) => Number(num));
+
+  const negatives: number[] = numArray.filter((num: number) => num < 0);
+
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed <${negatives.join(", ")}>`);
+  }
+
+  return numArray.reduce((sum: number, cur: number) => sum + cur, 0);
 }
 export default add;
