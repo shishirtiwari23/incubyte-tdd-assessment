@@ -13,11 +13,17 @@ function add(numbers: string) {
     // Removing everything before and including "\n"
   }
 
-  const numArray: number[] = numbers
-    .split(del)
-    .map((num: string) => Number(num));
+  const characterPresent: string[] = [];
+
+  const numArray: number[] = numbers.split(del).map((num: string) => {
+    if (isNaN(Number(num))) characterPresent.push(num);
+    return Number(num);
+  });
 
   const negatives: number[] = numArray.filter((num: number) => num < 0);
+
+  if (characterPresent.length > 0)
+    throw new Error(`string are not allowed <${characterPresent.join(", ")}>`);
 
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed <${negatives.join(", ")}>`);

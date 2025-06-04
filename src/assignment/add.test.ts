@@ -79,4 +79,9 @@ describe("String calculator", () => {
       "negative numbers not allowed <-46433, -32563>"
     );
   });
+  test("Another input", () => {
+    expect(() => add("1,232,df,34,df,2")).toThrow(
+      "string are not allowed <df, df>"
+    );
+  });
 });
